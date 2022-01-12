@@ -23,7 +23,9 @@ class BankAccount:
             self.balance -= amount
             print(f"Your account value is now ${self.balance}")
         else:
-            print(f"Your account value is: ${self.balance} in your {self.type} account you can not withdraw any money")
+            print(f"Your account value is: ${self.balance} in your {self.type} account. You can not withdraw ${amount}")
+            print("Insufficient Funds fee: Charging your account $5")
+            self.balance -= 5
         return self
     
     def display_account_info(self):
@@ -40,12 +42,12 @@ class BankAccount:
             print("No money no interest")
         return self
 
-savings = BankAccount(.05,0,"Savings")
+savings = BankAccount(.04,0,"Savings")
 checking = BankAccount(.02,0,"Checking")
 print("--------------------------------------------------------------------------------------------------")
 savings.deposit(100).deposit(200).deposit(300).withdraw(400).yeild_interest().display_account_info()
 print("--------------------------------------------------------------------------------------------------")
-checking.deposit(100).deposit(200).withdraw(100).withdraw(100).withdraw(100).withdraw(300).yeild_interest().display_account_info()
+checking.deposit(100).deposit(200).withdraw(100).withdraw(50).withdraw(45).withdraw(300).yeild_interest().display_account_info()
 print("--------------------------------------------------------------------------------------------------")
 
 BankAccount.print_all_accounts()
