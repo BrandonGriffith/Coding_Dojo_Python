@@ -45,7 +45,7 @@ class Ninja:
             print(f"Feeding {self.pet.name} {food}")
             self.pet.eat()
         else:
-            print("Oh no!!! you need more pet food!")
+            print(f"You have no more pet food for {self.pet.name}")
         return self
 
     def bathe(self):
@@ -59,5 +59,5 @@ Jasmin = Pet("Jasmin","Dog",['jump','play'],"Bark Bark")
 Valen = Ninja("Adrien","Dion",my_treats,my_pet_food, Jasmin)
 
 Valen.walk()
-Valen.feed()
+Valen.feed().feed().feed()
 Valen.bathe()
