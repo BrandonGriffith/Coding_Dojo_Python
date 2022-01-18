@@ -15,11 +15,11 @@ def process():
     session['location'] = request.form['location']
     session['language'] = request.form['language']
     session['comments'] = request.form['comments']
-    return redirect('/success')
+    return redirect('/result')
 
-@app.route('/success')
+@app.route('/result')
 def success():
-    return render_template('success.html')
+    return render_template('result.html')
 
 
 
