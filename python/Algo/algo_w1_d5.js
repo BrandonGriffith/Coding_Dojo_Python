@@ -1,5 +1,6 @@
 function ConvertToCoinChange(input) {
     var coins = [0, 0, 0, 0];
+    var x = ["counting pennys:   "];
 
     for ( input; input >= .25; input -= .25 ) {
         coins[0] = coins[0] + 1;
@@ -19,6 +20,7 @@ function ConvertToCoinChange(input) {
     for ( input; input > .00; input -= .01 ) {
         coins[3] = coins[3] + 1;
         input = input.toFixed(2);
+        x = x + "            " + input;
     }
 
     var str = "";
@@ -35,6 +37,7 @@ function ConvertToCoinChange(input) {
     if ( coins[3] >= 1 ) {
         str = str + coins[3] + " pennys";
     }
+    console.log(x)
     return str;
 }
 
