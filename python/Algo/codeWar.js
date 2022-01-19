@@ -1,14 +1,13 @@
-function even_or_odd(number) {
+function squareDigits(num){
     var x = "";
-    if (number % 2 == 0){
-        x = "Even";
-    }else{
-        x = "Odd";
+    num = num.toString();
+    num = num.split('');
+    for(i=0;i<num.length;i++){
+        var z = parseInt(num[i]) ** 2;
+        x += z.toString();
     }
+    x = parseInt(x);
     return x;
 }
-console.log(even_or_odd(9));
-console.log(even_or_odd(2));
-console.log(even_or_odd(1));
-console.log(even_or_odd(18));
-console.log(even_or_odd(5));
+
+console.log(squareDigits(211));
