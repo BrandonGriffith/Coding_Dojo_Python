@@ -57,6 +57,29 @@ class SLList{
         str += `this.tail = ${runner.value} --> null`;
         console.log(str);
     }
+
+    removeFromFront() {
+        if(this.head == null) {
+            console.log("list is null");
+            return this;
+        }
+        this.head = this.head.next;
+        return this;
+    }
+
+    removeFromBack() {
+        if(this.head == null || this.head.next == null) {
+            console.log("list is too small");
+            return this;
+        }
+        var runner = this.head;
+        while(runner.next != this.tail) {
+            runner = runner.next;
+        }
+        this.tail = runner;
+        runner.next = null;
+        return this;
+    }
 }
 
 var sll = new SLList();
@@ -69,4 +92,12 @@ sll.addToFront(53);
 sll.addToBack(12);
 sll.addToBack(13);
 sll.addToBack(14);
+sll.printValues();
+sll.removeFromBack();
+sll.printValues();
+sll.removeFromFront();
+sll.printValues();
+sll.addToBack(16);
+sll.printValues();
+sll.addToBack(19);
 sll.printValues();
