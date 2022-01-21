@@ -45,3 +45,18 @@ h1 {
     padding: 10px;
     border: black 2px solid;
 }
+
+.big {
+    font-size: 40px;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.plus {
+    padding: 6px;
+    margin-left: 10px;
+}
+
+.toRight {
+    float: right;
+}

@@ -5,26 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/style.css">
-    <title>New User</title>
+    <title>Edit User</title>
 </head>
 <body>
     <a href="/" class="btn toRight">Home</a>
     <div class="container">
-    <form action="/user/create" method="post">
-        <h1>New User</h1>
+    <form action="/user/update" method="post">
+        <h1>Edit: {{user.first_name}}</h1>
+        <input type="hidden" name="id" value={{user.id}}>
         <div>
             <label for="first_name">First Name:</label>
-            <input type="text" name="first_name"  class="space">
+            <input type="text" name="first_name"  class="space" value="{{user.first_name}}">
         </div>
         <div>
             <label for="last_name">Last Name:</label>
-            <input type="text" name="last_name"  class="space">
+            <input type="text" name="last_name"  class="space" value="{{user.last_name}}">
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="text" name="email"  class="spaces">
+            <input type="text" name="email"  class="spaces" value="{{user.email}}">
         </div>
-        <input type="submit" value="Add User" class="btn">
+        <input type="submit" value="Update User" class="btn">
+        <a href="/user/show/{{ user.id }}" class="btn plus">Show User</a>
     </form>
     </div>
 </body>
