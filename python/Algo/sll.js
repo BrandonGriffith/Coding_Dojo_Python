@@ -126,6 +126,38 @@ class SLList{
         str += `this.tail = ${runner.value} --> null`;
         console.log(str);
     }
+    moveMinToFront() {
+        var runner = this.head;
+        var smallNum = this.head;
+        var x = this.head;
+        while(runner.next != null){
+            if(runner.next.value < smallNum.value){
+                smallNum = runner.next;
+                x = runner;
+            }
+            runner = runner.next;
+        }
+        x.next = smallNum.next;
+        smallNum.next = this.head;
+        this.head = smallNum;
+        return this;
+    }
+    moveMaxToFront() {
+        var runner = this.head;
+        var smallNum = this.head;
+        var x = this.head;
+        while(runner.next != null){
+            if(runner.next.value > smallNum.value){
+                smallNum = runner.next;
+                x = runner;
+            }
+            runner = runner.next;
+        }
+        x.next = smallNum.next;
+        smallNum.next = this.head;
+        this.head = smallNum;
+        return this;
+    }
 }
 
 var sll = new SLList();
@@ -144,4 +176,9 @@ console.log(sll.contains(4)); // true
 console.log(sll.contains(93)); // false
 sll.removeFromBack(); // should remove 14
 sll.removeFromFront(); // should remove 53
+sll.addToBack(98);
+sll.printValues();
+sll.moveMinToFront();
+sll.printValues();
+sll.moveMaxToFront();
 sll.printValues();
