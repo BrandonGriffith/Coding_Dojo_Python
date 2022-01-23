@@ -158,7 +158,41 @@ class SLList{
         this.head = smallNum;
         return this;
     }
+    appendValue(loc, num) {
+        var runner = this.head;
+        var count = 0;
+        var x;
+
+        while(count <= loc) {
+            count++;
+            x = runner;
+            runner = runner.next;
+        }
+
+        var newNode = new Node(num);
+        newNode.next = runner;
+        x.next = newNode;
+        return this;
+    }
+    prependValue(loc, num) {
+        var runner = this.head;
+        var count = 0;
+        var x;
+
+        while(count < loc) {
+            count++;
+            x = runner;
+            runner = runner.next;
+        }
+
+        var newNode = new Node(num);
+        newNode.next = runner;
+        x.next = newNode;
+        return this;
+    }
+
 }
+
 
 var sll = new SLList();
 sll.addToFront(9);
@@ -181,4 +215,8 @@ sll.printValues();
 sll.moveMinToFront();
 sll.printValues();
 sll.moveMaxToFront();
+sll.printValues();
+sll.prependValue(2,80);
+sll.printValues();
+sll.appendValue(2,95);
 sll.printValues();
