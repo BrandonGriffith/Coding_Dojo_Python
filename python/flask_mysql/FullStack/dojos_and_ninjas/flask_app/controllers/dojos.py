@@ -10,7 +10,7 @@ def index():
 @app.route('/dojos')
 def dojos():
     dojos = Dojo.list_all()
-    return render_template("index.html", all_dojos = dojos)
+    return render_template("index.html", dojos = dojos)
 
 @app.route('/new/dojo',methods=['POST'])
 def new_dojo():

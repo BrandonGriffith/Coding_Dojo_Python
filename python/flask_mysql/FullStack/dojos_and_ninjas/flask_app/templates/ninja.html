@@ -14,8 +14,8 @@
         <div class="info">
             <label for="dojo">Dojo:</label>
             <select name="dojo_id" class="selbox">
-                {% for d in dojos %}
-                <option value="{{d.id}}">{{d.name}}</option>
+                {% for dojo in dojos %}
+                <option value="{{dojo.id}}">{{dojo.name}}</option>
                 {% endfor %}
             </select>
         </div>
