@@ -11,7 +11,7 @@ class SLQueue{
     }
     enqueue(value) {
         var newNode = new Node(value);
-        if (!this.head){
+        if (this.head == null){
             this.head = newNode;
             this.tail = newNode;
         }
@@ -29,10 +29,12 @@ class SLQueue{
         var runner = this.head;
         while(runner != null) {
             if(runner.value === value) {
+                console.log("true");
                 return true;
             }
             runner = runner.next;
         }
+        console.log("false");
         return false;
     }
     displayQueue() {
@@ -50,12 +52,12 @@ class SLQueue{
         return this.head.value;
     }
     isEmpty() {
-        if(!this.head) {
+        if(this.head == null) {
             console.log("empty");
-            return "empty!";
+            return true;
         }else {
             console.log("not empty");
-            return "not empty";
+            return false;
         }
     }
 }
@@ -72,6 +74,7 @@ q.enqueue(8);
 q.displayQueue();
 q.dequeue();
 q.displayQueue();
-console.log(q.contains(5));
+q.contains(5);
+q.contains(9);
 q.front();
 q.isEmpty();
