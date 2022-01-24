@@ -5,7 +5,7 @@ from flask_app.models import dojo, ninja
 @app.route('/ninjas')
 def ninjas():
     
-    return render_template('ninja.html',dojos= dojo.Dojo.list_all())
+    return render_template('ninja.html', dojos = dojo.Dojo.list_all())
 
 @app.route('/create/ninja',methods=['POST'])
 def create_ninja():
