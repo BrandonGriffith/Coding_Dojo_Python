@@ -14,10 +14,12 @@ class SLQueue{
         if (this.head == null){
             this.head = newNode;
             this.tail = newNode;
+            return this;
+        }else {
+            this.tail.next = newNode;
+            this.tail = newNode;
+            return this;
         }
-        this.tail.next = newNode;
-        this.tail = newNode;
-        return this;
     }
     dequeue() {
         var x = this.head;
