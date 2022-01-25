@@ -1,13 +1,13 @@
 class Node{
     constructor(value) {
-        this.value = value
-        this.next = null
+        this.value = value;
+        this.next = null;
     }
 }
 class SLQueue{
     constructor() {
-        this.head = null
-        this.tail = null
+        this.head = null;
+        this.tail = null;
     }
     enqueue(value) {
         var newNode = new Node(value);
@@ -42,7 +42,7 @@ class SLQueue{
     displayQueue() {
             var runner = this.head;
             var str = "queue start -- ";
-            while(runner){
+            while(runner != null){
                 str += runner.value + " --> ";
                 runner = runner.next;
             }
