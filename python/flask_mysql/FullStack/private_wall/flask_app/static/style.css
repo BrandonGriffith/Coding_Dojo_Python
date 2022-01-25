@@ -1,0 +1,40 @@
+body {
+    background-color: aqua;
+}
+.bigger {
+    font-size: 100px;
+}
+.btn {
+    background-color: rgb(5, 40, 92);
+    color: rgb(255, 255, 255);
+    padding: 4px 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.container {
+    margin: 0px auto;
+    padding: 10px;
+    width: 1500px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 30px;
+    border: 1px solid black;
+}
+label{
+    display: inline-block;
+    width: 150px;
+    text-align: left;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+input {
+    display: inline-block;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.box {
+    border: 2px solid black;
+    padding: 10px;
+}
