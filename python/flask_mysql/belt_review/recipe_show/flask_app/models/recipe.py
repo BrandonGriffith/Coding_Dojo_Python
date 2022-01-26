@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
+from flask_app.models import user
 
 class Recipe:
     def __init__(self,db_data):
@@ -12,6 +13,7 @@ class Recipe:
         self.user_id = db_data["user_id"]
         self.created_at = db_data["created_at"]
         self.updated_at = db_data["updated_at"]
+        self.user = {}
     db_name = "users_recipes"
 
     @classmethod
@@ -31,8 +33,19 @@ class Recipe:
         query = "SELECT * FROM recipes LEFT JOIN users ON recipes.user_id = users.id;"
         results =  connectToMySQL(cls.db_name).query_db(query)
         all_recipes = []
-        for row in results:
-            all_recipes.append( cls(row) )
+        for data in results:
+            recipe = cls(data)
+            recipe_data = {
+                "id" : data["users.id"],
+                "first_name" : data["first_name"],
+                "last_name" : data["last_name"],
+                "email" : data["email"],
+                "password" : data["password"],
+                "created_at" : data["users.created_at"],
+                "updated_at" : data["users.updated_at"]
+            }
+            recipe.user = user.User(recipe_data)
+            all_recipes.append(recipe)
         return all_recipes
 
     @classmethod
