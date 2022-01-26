@@ -28,7 +28,7 @@ class Recipe:
 
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM recipes;"
+        query = "SELECT * FROM recipes LEFT JOIN users ON recipes.user_id = users.id;"
         results =  connectToMySQL(cls.db_name).query_db(query)
         all_recipes = []
         for row in results:
