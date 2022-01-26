@@ -27,6 +27,7 @@
             </thead>
             <tbody>
                 {% for recipe in recipes %}
+                    <p>{{recipe.user.id}} and {{recipe.user_id}} and {{session.user_id}}</p>
                     <tr>
                         <td>{{recipe.name}}</td>
                         {% if recipe.under30min == 1 %}
