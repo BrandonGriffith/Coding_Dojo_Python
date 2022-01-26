@@ -43,6 +43,15 @@ def dashboard():
     }
     return render_template("dashboard.html",user=User.get_by_id(data),recipes=Recipe.get_all())
 
+@app.route("/all/users")
+def all_users():
+    if "user_id" not in session:
+        return redirect("/")
+    data ={
+        "id": session["user_id"]
+    }
+    return render_template("dashboard.html",user=User.get_by_id(data),recipes=Recipe.get_all())
+
 @app.route("/logout")
 def logout():
     session.clear()
