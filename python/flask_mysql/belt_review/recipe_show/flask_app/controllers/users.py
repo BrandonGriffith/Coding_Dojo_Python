@@ -50,7 +50,9 @@ def all_users():
     data ={
         "id": session["user_id"]
     }
-    return render_template("dashboard.html",user=User.get_by_id(data),recipes=Recipe.get_all())
+    user = User.get_by_id(data)
+    recipes = Recipe.get_all()
+    return render_template("users.html", user=user, recipes=recipes)
 
 @app.route("/logout")
 def logout():

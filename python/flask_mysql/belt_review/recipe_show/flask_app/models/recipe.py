@@ -32,7 +32,6 @@ class Recipe:
         results =  connectToMySQL(cls.db_name).query_db(query)
         all_recipes = []
         for row in results:
-            print(row["date_made"])
             all_recipes.append( cls(row) )
         return all_recipes
 
