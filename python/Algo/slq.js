@@ -22,10 +22,13 @@ class SLQueue{
         }
     }
     dequeue() {
-        var x = this.head;
+        if(!this.head) {
+            return null;
+        }
+        var temp = this.head;
         this.head = this.head.next;
-        x.next = null;
-        return x.value;
+        temp.next = null;
+        return temp.value;
     }
     contains(value) {
         var runner = this.head;
@@ -62,6 +65,27 @@ class SLQueue{
             return false;
         }
     }
+    q_size() {
+        var runner = this.head;
+        var count = 0;
+        while (runner != null){
+            count++;
+            runner = runner.next;
+        }
+        return count;
+    }
+    interleaveQueue(q_two) {
+        var q_langth = Math.ceil(this.q_size()/2);
+        for (var i = 0; i < q_langth; i++){
+            q_two.enqueue(this.dequeue());
+        }
+        q_langth = q_two.q_size();
+        for (var i = 1; i < q_langth; i++){
+            q_two.enqueue(q_two.dequeue());
+            q_two.enqueue(this.dequeue());
+        }
+        q_two.displayQueue();
+    }
 }
 
 var q = new SLQueue();
@@ -80,3 +104,7 @@ q.contains(5);
 q.contains(9);
 q.front();
 q.isEmpty();
+q.displayQueue();
+var q2 = new SLQueue();
+q.interleaveQueue(q2);
+q2.displayQueue();
