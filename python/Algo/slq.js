@@ -86,6 +86,45 @@ class SLQueue{
         }
         q_two.displayQueue();
     }
+    isPallindromee() {
+        var runner = this.head;
+        var palli = [];
+        while (runner != null) {
+            palli.push(runner.value);
+            runner = runner.next;
+        }
+        runner = this.head;
+        for(var i = palli.length; i > palli.length/2; i --) {
+            if(palli[i - 1] != runner.value) {
+                this.displayQueue();
+                console.log("this is not a pallindromee");
+                return false
+            }
+            runner = runner.next
+        }
+        this.displayQueue();
+        console.log("this is a pallindromee")
+        return true
+    }
+    isPallindrome() {
+        var palli = [];
+        var runner = this.head;
+        while (runner != null) {
+            palli.push(runner.value);
+            runner = runner.next;
+        }
+        for (var i = 0; i < palli.length/2; i++){
+            var x = palli.length - 1
+            if (palli[i] != palli[x - i]){
+                this.displayQueue();
+                console.log("this is not a pallindrome");
+                return false;
+            }
+        }
+        this.displayQueue();
+        console.log("this is a pallindrome");
+        return true
+    }
 }
 
 var q = new SLQueue();
@@ -108,3 +147,9 @@ q.displayQueue();
 var q2 = new SLQueue();
 q.interleaveQueue(q2);
 q2.displayQueue();
+q.enqueue(1);
+q.enqueue(3);
+q.enqueue(2);
+q.enqueue(3);
+q.enqueue(1);
+q.isPallindrome();
