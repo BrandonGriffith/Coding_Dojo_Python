@@ -94,8 +94,8 @@ class SLQueue{
             runner = runner.next;
         }
         runner = this.head;
-        for(var i = palli.length; i > palli.length/2; i --) {
-            if(palli[i - 1] != runner.value) {
+        for(var i = palli.length - 1; i >= Math.floor(palli.length/2); i --) {
+            if(palli[i] != runner.value) {
                 this.displayQueue();
                 console.log("this is not a pallindromee");
                 return false
@@ -148,8 +148,11 @@ var q2 = new SLQueue();
 q.interleaveQueue(q2);
 q2.displayQueue();
 q.enqueue(1);
-q.enqueue(3);
 q.enqueue(2);
 q.enqueue(3);
+q.enqueue(4);
+q.enqueue(3);
+q.enqueue(2);
 q.enqueue(1);
 q.isPallindrome();
+q.isPallindromee();
