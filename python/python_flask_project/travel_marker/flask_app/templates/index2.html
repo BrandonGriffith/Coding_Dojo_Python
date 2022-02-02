@@ -49,10 +49,14 @@
     <!--The div element for the map -->
     <div id="map"></div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-    src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&libraries=&v=weekly"
-    async
-></script>
+    <script id="google_api" src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&libraries=&v=weekly">
+    </script>
+    <script id="remover">
+        var google_api = document.getElementById("google_api");
+        google_api.remove();
+        var remover = document.getElementById("remover");
+        remover.remove();
+    </script>
     </div>
 </body>
 </html>
