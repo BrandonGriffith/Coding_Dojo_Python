@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, redirect
 from flask_app import app
 from flask_app.models.google_map import Google_map
 from dotenv import load_dotenv
@@ -16,4 +16,6 @@ def index():
 @app.route("/location",methods=["POST"])
 def get_location():
     location = Google_map.extract_lat_lng(request.form)
+    if location[0] == None:
+        return redirect("/")
     return render_template("index2.html", location=location, api_key=API_KEY)
