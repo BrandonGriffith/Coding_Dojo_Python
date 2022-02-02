@@ -12,7 +12,7 @@ class User:
         self.password = data["password"]
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
-    db_name = "users_shows"
+    db_name = "users_favorites"
 
     @classmethod
     def add(cls,data):

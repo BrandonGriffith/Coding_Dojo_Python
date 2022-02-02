@@ -18,7 +18,7 @@
     </div>
     <div class="col-8 p-3 my-3 mx-auto bg-dark text-light">
         
-        <h3>My Google Maps Demo</h3>
+        <h3>My Google Maps location {{location[0]}}, {{location[1]}}</h3>
         <form action="/location" method="post" class="col-3 p-3 bg-dark text-light rounded-3">
             <h1 class="text-info">Search Location</h1>
             <div class="form-group">
@@ -29,11 +29,14 @@
         </form>
         <script>
             function initMap() {
-                // The location of Uluru
-                const uluru = { lat: -25.344, lng: 131.036 };
+                lat1 = '{{location[0]}}';
+                lng1 = '{{location[1]}}';
+                lat1 = parseFloat(lat1);
+                lng1 = parseFloat(lng1);
+                const uluru = { lat: lat1, lng: lng1 };
                 // The map, centered at Uluru
                 const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 10,
+                    zoom: 12,
                     center: uluru,
                 });
                 // The marker, positioned at Uluru
@@ -41,15 +44,15 @@
                     position: uluru,
                     map: map,
                 });
-            }            
+            }
         </script>
     <!--The div element for the map -->
     <div id="map"></div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-        src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&libraries=&v=weekly"
-        async
-    ></script>
+    src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&libraries=&v=weekly"
+    async
+></script>
     </div>
 </body>
 </html>

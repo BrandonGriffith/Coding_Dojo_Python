@@ -6,7 +6,8 @@ bcrypt = Bcrypt(app)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    api_key = "AIzaSyCEDhiHaU2a4aVHM78GeSPU8P8Tud9B9g0"
+    return render_template("index.html", api_key=api_key)
 
 @app.route("/register",methods=["POST"])
 def register():
