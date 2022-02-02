@@ -18,7 +18,7 @@
     </div>
     <div class="col-8 p-3 my-3 mx-auto bg-dark text-light">
         <div class="d-flex">
-        <div>
+        <div class="half_size">
         <h3>My Google Maps location {{location[0]}}, {{location[1]}}</h3>
         <form action="/location" method="post" class="col-3 p-3 bg-dark text-light rounded-3">
             <h1 class="text-info">Search Location</h1>
@@ -50,7 +50,7 @@
             }
         </script>
     <!--The div element for the map -->
-    <div id="map"></div>
+    <div id="map" class="half_size"></div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script id="google_api" src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&libraries=&v=weekly">
     </script>

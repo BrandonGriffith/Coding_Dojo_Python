@@ -14,3 +14,6 @@ body {
 .fully {
     width: 100%;
 }
+.half_size {
+    width: 49%;
+}

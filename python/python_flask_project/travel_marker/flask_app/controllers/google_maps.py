@@ -18,7 +18,6 @@ def index():
 @app.route("/location",methods=["POST"])
 def get_location():
     location = Google_map.extract_lat_lng(request.form)
-    print(request.form)
     if location[0] == None:
         return redirect("/")
     wiki_sum = wiki_summary(request.form['location'])
