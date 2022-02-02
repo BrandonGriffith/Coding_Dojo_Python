@@ -33,6 +33,7 @@
                 lng1 = '{{location[1]}}';
                 lat1 = parseFloat(lat1);
                 lng1 = parseFloat(lng1);
+                // The location of Uluru
                 const uluru = { lat: lat1, lng: lng1 };
                 // The map, centered at Uluru
                 const map = new google.maps.Map(document.getElementById("map"), {
@@ -49,7 +50,7 @@
     <!--The div element for the map -->
     <div id="map"></div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script id="google_api" src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&libraries=&v=weekly">
+    <script id="google_api" src="https://maps.googleapis.com/maps/api/js?key={{google_api_key}}&callback=initMap&libraries=&v=weekly">
     </script>
     <script id="remover">
         var google_api = document.getElementById("google_api");

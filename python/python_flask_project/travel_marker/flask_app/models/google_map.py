@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-API_KEY = os.getenv("API_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 
 class Google_map:
@@ -15,7 +15,7 @@ class Google_map:
     @classmethod
     def extract_lat_lng(cls, data):
         api_url = f"https://maps.googleapis.com/maps/api/geocode/json"
-        params = {"address": data, "key": API_KEY }
+        params = {"address": data, "key": GOOGLE_API_KEY }
         url_params = urlencode(params)
         url = f"{api_url}?{url_params}"
         r = requests.get(url)

@@ -6,16 +6,16 @@ import os
 load_dotenv()
 
 
-API_KEY = os.getenv("API_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 
 @app.route("/")
 def index():
-    return render_template("index.html", api_key=API_KEY)
+    return render_template("index.html", google_api_key=GOOGLE_API_KEY)
 
 @app.route("/location",methods=["POST"])
 def get_location():
     location = Google_map.extract_lat_lng(request.form)
     if location[0] == None:
         return redirect("/")
-    return render_template("index2.html", location=location, api_key=API_KEY)
+    return render_template("index2.html", location=location, google_api_key=GOOGLE_API_KEY)
