@@ -4,10 +4,6 @@ from flask_app.models.user import User
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
-@app.route("/")
-def index():
-    api_key = "AIzaSyCEDhiHaU2a4aVHM78GeSPU8P8Tud9B9g0"
-    return render_template("index.html", api_key=api_key)
 
 @app.route("/register",methods=["POST"])
 def register():

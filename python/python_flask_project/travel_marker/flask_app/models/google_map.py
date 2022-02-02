@@ -1,19 +1,22 @@
 import requests
 from urllib.parse import urlencode
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
 
 
-class Google_maps:
+class Google_map:
     def __init__(self):
-        self.api_key = 'AIzaSyCEDhiHaU2a4aVHM78GeSPU8P8Tud9B9g0'
         self.lat = ''
         self.lng = ''
-    api_key = 'AIzaSyCEDhiHaU2a4aVHM78GeSPU8P8Tud9B9g0'
 
     @classmethod
     def extract_lat_lng(cls, data):
         loc_query = data
         endpoint = f"https://maps.googleapis.com/maps/api/geocode/json"
-        params = {"address": loc_query, "key": cls.api_key }
+        params = {"address": loc_query, "key": API_KEY }
         url_params = urlencode(params)
         url = f"{endpoint}?{url_params}"
         r = requests.get(url)
