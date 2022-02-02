@@ -12,11 +12,13 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 @app.route("/")
 def index():
-    return render_template("index.html", google_api_key=GOOGLE_API_KEY)
+    location = Google_map.extract_lat_lng([('location', 'Mountain View, CA')])
+    return render_template("index.html", location=location, google_api_key=GOOGLE_API_KEY)
 
 @app.route("/location",methods=["POST"])
 def get_location():
     location = Google_map.extract_lat_lng(request.form)
+    print(request.form)
     if location[0] == None:
         return redirect("/")
     wiki_sum = wiki_summary(request.form['location'])

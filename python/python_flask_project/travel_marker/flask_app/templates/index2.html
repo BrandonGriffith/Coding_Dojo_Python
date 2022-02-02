@@ -17,16 +17,18 @@
         </div>
     </div>
     <div class="col-8 p-3 my-3 mx-auto bg-dark text-light">
-        
+        <div class="d-flex">
+        <div>
         <h3>My Google Maps location {{location[0]}}, {{location[1]}}</h3>
         <form action="/location" method="post" class="col-3 p-3 bg-dark text-light rounded-3">
             <h1 class="text-info">Search Location</h1>
             <div class="form-group">
                 <label for="location">Location:</label>
-                <input type="text" name="location" class="text-info form-control">
+                <input type="text" name="location" class="text-info form-control btn1">
             </div>
             <input type="submit" value="location" class="btn btn-info my-2">
         </form>
+        </div>
         <script>
             function initMap() {
                 lat1 = '{{location[0]}}';
@@ -50,7 +52,7 @@
     <!--The div element for the map -->
     <div id="map"></div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script id="google_api" src="https://maps.googleapis.com/maps/api/js?key={{google_api_key}}&callback=initMap&libraries=&v=weekly">
+    <script id="google_api" src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&libraries=&v=weekly">
     </script>
     <script id="remover">
         var google_api = document.getElementById("google_api");
@@ -58,6 +60,7 @@
         var remover = document.getElementById("remover");
         remover.remove();
     </script>
+    </div>
     <p>{{wiki_sum}}</p>
     </div>
 </body>
