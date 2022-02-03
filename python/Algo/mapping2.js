@@ -8,18 +8,18 @@ function mappingItineraries(arr) {
             runner2 = 0;
         }else if(runner2 == arr.length-1) {
             result.push(arr[runner1][0]);
+            runner1 = 0;
             runner2 ++;
         }else {
             runner2 ++;
         }
     }
-    var j = 0;
     while(result.length <= arr.length) {
-        if(result[result.length-1] == arr[j][0]) {
-            result.push(arr[j][1]);
-            j = 0;
+        if(result[result.length-1] == arr[runner1][0]) {
+            result.push(arr[runner1][1]);
+            runner1 = 0;
         }else {
-            j++
+            runner1++
         }
     }
     return result.join(" -> ");
