@@ -11,17 +11,17 @@
 </head>
 <body>
     <div class="d-flex justify-content-between align-items-center col-12">
-        <h1 class="text-center">Travel Marker!!!</h1>
+        <h1 class="text-light">Travel Marker!!!</h1>
         <div class="d-flex col-4 justify-content-around">
             <div class="col-4">
             <form action="/location" method="post">
-            <label for="location">Favorite List:</label>
+            <label class="text-light" for="location">Favorite List:</label>
             <select name="location" id="location">
                 {% for favs in user_favs %}
                 <option value="{{favs.country}}">{{favs.country}}</option>
                 {% endfor %}
             </select>
-            <input type="submit" value="Search" class="btn btn-dark my-2">
+            <input type="submit" value="Go to" class="btn btn-dark my-2">
             </form>
             </div>
             <div><a href="/logout" class="btn down1 btn-dark">Logout</a></div>
