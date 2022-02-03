@@ -13,16 +13,18 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 @app.route("/")
 def index():
+    loc_name = 'Mountain View, CA'
     location = Google_map.extract_lat_lng([('location', 'Mountain View, CA')])
     wiki_sum = wiki_summary("Google Maps")
     print(session)
     if "user_id" not in session:
         return render_template("index.html", location=location, google_api_key=GOOGLE_API_KEY, wiki_sum=wiki_sum)
     user_favs = get_fav(session)
-    return render_template("user_home_page.html", location=location, google_api_key=GOOGLE_API_KEY, wiki_sum=wiki_sum, user_favs=user_favs)
+    return render_template("user_home_page.html", location=location, google_api_key=GOOGLE_API_KEY, wiki_sum=wiki_sum, user_favs=user_favs, loc_name=loc_name)
 
 @app.route("/location",methods=["POST"])
 def get_location():
+    loc_name = request.form['location']
     session["location"] = request.form['location']
     location = Google_map.extract_lat_lng(request.form)
     if location[0] == None:
@@ -32,15 +34,16 @@ def get_location():
     if "user_id" not in session:
         return render_template("index2.html", location=location, google_api_key=GOOGLE_API_KEY, wiki_sum=wiki_sum)
     user_favs = get_fav(session)
-    return render_template("user_home_page.html", location=location, google_api_key=GOOGLE_API_KEY, wiki_sum=wiki_sum, user_favs=user_favs)
+    return render_template("user_home_page.html", location=location, google_api_key=GOOGLE_API_KEY, wiki_sum=wiki_sum, user_favs=user_favs, loc_name=loc_name)
 
 @app.route("/user_home")
 def user_home():
-    location = Google_map.extract_lat_lng([('location', 'Mountain View, CA')])
-    wiki_sum = wiki_summary("Google Maps")
+    loc_name = session["location"]
+    location = Google_map.extract_lat_lng([('location', session["location"])])
+    wiki_sum = wiki_summary(session["location"])
     if "user_id" not in session:
         return render_template("index2.html", location=location, google_api_key=GOOGLE_API_KEY, wiki_sum=wiki_sum)
     user_favs = get_fav(session)
-    return render_template("user_home_page.html", location=location, google_api_key=GOOGLE_API_KEY, wiki_sum=wiki_sum, user_favs=user_favs)
+    return render_template("user_home_page.html", location=location, google_api_key=GOOGLE_API_KEY, wiki_sum=wiki_sum, user_favs=user_favs, loc_name=loc_name)
 
 

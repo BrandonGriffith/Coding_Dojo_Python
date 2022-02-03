@@ -39,9 +39,10 @@
             </div>
             <input type="submit" value="Search" class="btn btn-info my-2">
         </form>
-        <a href="/fav_it">
-        <img onclick="changeImg()" id="mainImg" src="static/imgs/clear_heart.png" alt="fav">
-        </a>
+        <form action="/fav_it" method="post">
+            <input type="hidden" name="location" value="{{loc_name}}" class="text-info form-control btn1">
+            <img onclick='changeImg(); this.parentNode.submit()' id="mainImg" src="static/imgs/clear_heart.png" alt="fav">
+        </form>
         </div>
         <script>
             function initMap() {
@@ -77,5 +78,10 @@
     </div>
     <p>{{wiki_sum}}</p>
     </div>
+                {% for favs in user_favs %}
+                {% if favs.country == loc_name %}
+                    <script>changeImg()</script>
+                {% endif %}
+                {% endfor %}
 </body>
 </html>

@@ -17,7 +17,7 @@ def register():
         "password": bcrypt.generate_password_hash(request.form["password"])
     }
     session["user_id"] = User.add(data)
-    return redirect("/user_home")
+    return redirect("/")
 
 @app.route("/login",methods=["POST"])
 def login():
@@ -29,16 +29,7 @@ def login():
         flash("password is wrong","login")
         return redirect("/")
     session["user_id"] = user.id
-    return redirect("/user_home")
-
-@app.route("/user_home_page")
-def user_home_page():
-    if "user_id" not in session:
-        return redirect("/")
-    data ={
-        "id": session["user_id"]
-    }
-    return render_template("user_home_page.html",user=User.get_by_id(data))
+    return redirect("/")
 
 @app.route("/login_page")
 def login_page():
@@ -49,13 +40,11 @@ def logout():
     session.clear()
     return redirect("/")
 
-@app.route("/fav_it")
+@app.route("/fav_it",methods=["POST"])
 def fav_it():
     if "user_id" not in session:
         return redirect("/")
-    data ={
-        "id": session["user_id"]
-    }
+    session["location"] = request.form['location']
     fav1 = add_fav(session)
     return redirect("/user_home")
 

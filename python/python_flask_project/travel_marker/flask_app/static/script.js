@@ -1,5 +1,5 @@
-var imgCount = 0;
 function changeImg(){
+    var imgCount = 0;
     mainImg = document.getElementById("mainImg");
     if(imgCount == 0){
         mainImg.src = "static/imgs/red_heart.png";
