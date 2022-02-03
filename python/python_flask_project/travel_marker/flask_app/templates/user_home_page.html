@@ -4,21 +4,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Travel Marker</title>
+    <title>Travel Marker</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <script src="static/script.js"></script>
 </head>
 <body>
     <div class="d-flex justify-content-between align-items-center col-12">
-        <h1 class="text-center">Hello, {{user.first_name}}!!! Welcome to Travel Marker.</h1>
+        <h1 class="text-center">Travel Marker!!!</h1>
         <div class="d-flex col-4 justify-content-around">
-            <a href="/" class="btn btn-dark">Go Back</a>
-            <a href="/logout" class="btn btn-dark">Logout</a>
+            <div class="col-4">
+            <form action="/location" method="post">
+            <label for="location">Favorite List:</label>
+            <select name="location" id="location">
+                {% for favs in user_favs %}
+                <option value="{{favs.country}}">{{favs.country}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Search" class="btn btn-dark my-2">
+            </form>
+            </div>
+            <div><a href="/logout" class="btn down1 btn-dark">Logout</a></div>
         </div>
     </div>
     <div class="col-8 p-3 my-3 mx-auto bg-dark text-light">
-        
-
-
+        <div class="d-flex">
+        <div class="half_size">
+        <h3>Google Maps Location {{location[0]}}, {{location[1]}}</h3>
+        <form action="/location" method="post" class="col-3 p-3 bg-dark text-light rounded-3">
+            <h1 class="text-info">Search Location</h1>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" name="location" class="text-info form-control btn1">
+            </div>
+            <input type="submit" value="Search" class="btn btn-info my-2">
+        </form>
+        <a href="/fav_it">
+        <img onclick="changeImg()" id="mainImg" src="static/imgs/clear_heart.png" alt="fav">
+        </a>
+        </div>
+        <script>
+            function initMap() {
+                lat1 = '{{location[0]}}';
+                lng1 = '{{location[1]}}';
+                lat1 = parseFloat(lat1);
+                lng1 = parseFloat(lng1);
+                // The location of Uluru
+                const uluru = { lat: lat1, lng: lng1 };
+                // The map, centered at Uluru
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 12,
+                    center: uluru,
+                });
+                // The marker, positioned at Uluru
+                const marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map,
+                });
+            }
+        </script>
+    <!--The div element for the map -->
+    <div id="map" class="half_size"></div>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script id="google_api" src="https://maps.googleapis.com/maps/api/js?key={{google_api_key}}&callback=initMap&libraries=&v=weekly">
+    </script>
+    <script id="remover">
+        var google_api = document.getElementById("google_api");
+        google_api.remove();
+        var remover = document.getElementById("remover");
+        remover.remove();
+    </script>
+    </div>
+    <p>{{wiki_sum}}</p>
     </div>
 </body>
 </html>

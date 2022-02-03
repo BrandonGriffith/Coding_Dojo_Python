@@ -1,6 +1,7 @@
 from flask import render_template,redirect,session,request, flash
 from flask_app import app
 from flask_app.models.user import User
+from flask_app.models.fav import *
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -16,7 +17,7 @@ def register():
         "password": bcrypt.generate_password_hash(request.form["password"])
     }
     session["user_id"] = User.add(data)
-    return redirect("/user_home_page")
+    return redirect("/user_home")
 
 @app.route("/login",methods=["POST"])
 def login():
@@ -28,7 +29,7 @@ def login():
         flash("password is wrong","login")
         return redirect("/")
     session["user_id"] = user.id
-    return redirect("/user_home_page")
+    return redirect("/user_home")
 
 @app.route("/user_home_page")
 def user_home_page():
@@ -47,4 +48,14 @@ def login_page():
 def logout():
     session.clear()
     return redirect("/")
+
+@app.route("/fav_it")
+def fav_it():
+    if "user_id" not in session:
+        return redirect("/")
+    data ={
+        "id": session["user_id"]
+    }
+    fav1 = add_fav(session)
+    return redirect("/user_home")
 

@@ -25,7 +25,10 @@ class Google_map:
         try:
             latlng = r.json()['results'][0]['geometry']['location']
         except:
-            pass
+            try:
+                latlng = r.json()['results'][1]['geometry']['location']
+            except:
+                pass
         lat,lng = latlng.get("lat"), latlng.get("lng")
         return lat, lng
 
