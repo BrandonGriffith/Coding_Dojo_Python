@@ -1,12 +1,11 @@
 function recursiveBinarySearch(list, value, index=0, runner=null){
         if (runner == null){
             runner = Math.floor(list.length/2);
-        }else if (runner != null){
-            runner = Math.floor(runner/2);
-        }
-        if (runner == 0){
+        }else if (runner == 0){
             console.log(value + " not found");
             return -1;
+        }else if (runner != null){
+            runner = Math.floor(runner/2);
         }
         if (list[index+runner] == value){
             while (list[index+runner] == value){
@@ -15,8 +14,7 @@ function recursiveBinarySearch(list, value, index=0, runner=null){
             index = index + runner + 1;
             console.log("found at index " + index);
             return index;
-        }
-        if (list[index+runner] < value){
+        }else if (list[index+runner] < value){
             return recursiveBinarySearch(list, value, index + runner, runner);
         }
         return recursiveBinarySearch(list, value, index , runner);
