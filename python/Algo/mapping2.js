@@ -1,5 +1,5 @@
 function mappingItineraries(arr) {
-    var result = []
+    var result = [];
     var runner1 = 0;
     var runner2 = 0;
     while(runner2 < arr.length) {
@@ -19,7 +19,7 @@ function mappingItineraries(arr) {
             result.push(arr[runner1][1]);
             runner1 = 0;
         }else {
-            runner1++
+            runner1++;
         }
     }
     return result.join(" -> ");
