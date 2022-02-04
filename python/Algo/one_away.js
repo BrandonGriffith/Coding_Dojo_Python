@@ -20,6 +20,9 @@ function oneAway(str1, str2) {
     }
     runner1 = str1.length-1;
     runner2 = str2.length-1;
+    if(str1.length < str2.length && str1[runner1] != str2[runner2]){
+        runner2--;
+    }
     while(runner1 >= 0 || runner2 >= 0) {
         if(str1[runner1] == str2[runner2]) {
             runner1--;
@@ -45,5 +48,4 @@ console.log(oneAway("hello", "helo")) // true
 console.log(oneAway("hello", "hell")) // true
 console.log(oneAway("hjllo", "helo")) // false
 console.log(oneAway("hello", "ello")) // true
-
-
+console.log(oneAway("hell", "hello")) // true
